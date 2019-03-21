@@ -64,7 +64,7 @@
 		<main role="main" class="container text-center">
 			<h1 class="yesno d-none">Não</h1>
 			<p class="lead-no lead d-none">Estamos há <span class="odometer">0</span> dias sem rolês da REPD.</p>
-			<p class="lead-yes lead d-none">Hoje vai rolar <b class="party-name">0</b>!</p>
+			<p class="lead-yes lead d-none">Hoje vai rolar <b class="meeting-name">0</b> ás <a class="meeting-starts-at">0</a>!</p>
 		</main>
 
 		<footer>
@@ -83,14 +83,16 @@
 		</footer>
 
 		<script>
-			let parties = [
+			let meetings = [
 				{
 					name: 'Festa Junina da CEM',
+					startsAt: null,
 					date: '28/06/2018',
 					link: null
 				},
 				{
 					name: 'Maré Verde no IFCH',
+					startsAt: '23:00',
 					date: '02/08/2018',
 					link: 'https:/fb.com/events/234367033875311'
 				}
@@ -99,43 +101,44 @@
 			let yesNo = document.querySelector('.yesno'),
 				leadY = document.querySelector('.lead-yes')
 				leadN = document.querySelector('.lead-no'),
-				pName = document.querySelector('.party-name'),
+				mName = document.querySelector('.meeting-name'),
+				mStartsAt = document.querySelector('.meeting-starts-at'),
 				odom  = document.querySelector('.odometer');
 
 			let today = dateFns.endOfToday();
 
-			parties = parties.map((v) => {
+			meetings = meetings.map((v) => {
 				v.date = dateFns.parse(v.date.split('/').reverse().join('-'));
 				return v;
 			});
 
-			parties = parties.sort((v, vv) => {
+			meetings = meetings.sort((v, vv) => {
 				return dateFns.compareDesc(v.date, vv.date);
 			});
 
-			parties = parties.filter((v, k) => {
+			meetings = meetings.filter((v, k) => {
 				return dateFns.isBefore(v.date, today);
 			});
 
-			console.log(parties)
-
 			document.addEventListener("DOMContentLoaded", function () {
-				let theParty = parties[0];
+				let theMeeting = meetings[0];
 
-				if (dateFns.isToday(theParty.date)) {
+				if (dateFns.isToday(theMeeting.date)) {
 					yesNo.innerText = 'SIM!';
 
-					let partyHTML = theParty.name;
-					if (theParty.link) {
-						partyHTML = `<a href="${theParty.link}" target="_blank">${partyHTML}</a>`;
+					let meetingNameHTML = theMeeting.name;
+					if (theMeeting.link) {
+						meetingNameHTML = `<a href="${theMeeting.link}" target="_blank">${meetingNameHTML}</a>`;
 					}
 
-					pName.innerHTML = partyHTML;
+					mName.innerHTML = meetingNameHTML;
+
+					mStartsAt.innerHTML = theMeeting.startsAt;
 
 					leadY.classList.remove('d-none');
 				} else {
 					yesNo.innerText = 'NÃO';
-					odom.innerText = dateFns.differenceInCalendarDays(today, theParty.date);
+					odom.innerText = dateFns.differenceInCalendarDays(today, theMeeting.date);
 
 					leadN.classList.remove('d-none');
 				}
