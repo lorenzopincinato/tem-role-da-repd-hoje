@@ -1,6 +1,6 @@
-# Tem IFCH Hoje?
+# Tem rolê da REPD hoje?
 
-Originally created as a joke, _Tem IFCH Hoje?_ is a very simple website intended to be a quick way to check whether any party or event is happening today at IFCH - Instituto de Filosofia e Ciências Humanas.
+Created as a internal joke of the members of REPD, _Tem rolê da REPD hoje?_ is a very simple website intended to be a quick way to check whether any meeting of the members is happening today at anywhere and anytime.
 
 ## Contributors
 
