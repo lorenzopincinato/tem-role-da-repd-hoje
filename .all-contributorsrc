@@ -28,6 +28,18 @@
         "doc",
         "ideas"
       ]
+    },
+    {
+      "login": "lorenzopincinato",
+      "name": "Lorenzo Pincinato",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17949994?v=4",
+      "profile": "http://lorenzopincinato.me/",
+      "contributions": [
+        "code",
+        "ideas",
+        "doc"
+      ]
     }
-  ]
+  ],
+  "contributorsPerLine": 7
 }
